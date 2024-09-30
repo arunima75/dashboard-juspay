@@ -1,13 +1,15 @@
 .grid1, .gridArea{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 8px !important
+    grid-template-columns: 50% 50%;
+    grid-gap: 8px !important;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .grid2{
     display: grid;
-    grid-template-columns: 75% 24%;
-    grid-gap: 8px !important
+    grid-template-columns: 71% 29%;
+    grid-gap: 8px !important;
 }
 
 .cardContent {

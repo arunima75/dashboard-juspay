@@ -25,7 +25,7 @@ function Dashboards({ title,data}) {
               }}
             >
               <span className={styles.linkPoint}>{openDropdown === index ? 'v' : '>'}</span>
-              <img height={20} src={item.icon} alt={item.name} />
+              <img  className={styles.image} height={20} src={item.icon} alt={item.name} />
               <span className={styles.linkStyle}>{item.name}</span>
             </a>
             {item.children && (

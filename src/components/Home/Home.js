@@ -79,7 +79,7 @@ function Home() {
               <Card color={item.bgColor} title={item.name} className={styles.cardContent}>
                 <div
                   key={index}
-                  className="d-flex align-center justify-space-between mt-2"
+                  className="d-flex align-center justify-space-between mt-1"
                 >
                   <h1>{item.value}</h1>
                   <div className="d-flex align-center">
@@ -103,8 +103,8 @@ function Home() {
           <Card color="primary" title="Revenue" >
             <Chart graphData={estimateGraph} chartType="line" height={300} />
           </Card>
-          <Card color="primary" title="Revenue by Location">
-            <WorldMap />
+          <Card color="primary" title={<span style={{ textAlign: "center", display: "block" }}>Revenue by Location</span>}>
+            <WorldMap height={82}/>
           </Card>
         </div>
 
