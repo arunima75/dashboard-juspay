@@ -1,0 +1,11 @@
+// .highchartsPie > div > div > svg > .highcharts-legend {
+//     display: none !important;
+// }
+
+.highchartsPie > div > div > svg > text {
+    display: none !important;
+}
+.custom-tooltip {
+    backdrop-filter: blur(40px); 
+    -webkit-backdrop-filter: blur(40px);  
+  }

@@ -1,0 +1,105 @@
+@import '../../../App.scss';
+
+.panel {
+    width: 212px;
+    border: 1px solid $borderColor;
+    padding: 24px 24px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.favorites {
+    display: flex;
+    align-items: center;
+}
+
+.list {
+    padding-left: 12px;
+    margin: 0;
+    list-style: circle;
+
+    li {
+        padding: 8px 4px;
+    }
+}
+
+.bgSecondary {
+    color: $secondaryColor;
+    letter-spacing: 0.6px;
+}
+
+.dashboards {
+    p {
+        color: $secondaryColor;
+    }
+
+    ul {
+        list-style-type: "";
+        padding-left: 0px;
+        position: relative;
+        margin: 0px;
+
+        li {
+            padding: 2px 0px;
+        }
+    }
+
+    .link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        padding: 6px 16px;
+        border-radius: 8px;
+
+        &:hover {
+            background-color: rgba(28, 28, 28, 0.05);
+        }
+    }
+
+    .linkPoint {
+        margin-right: 8px;
+        color: rgba(28, 28, 28, 0.2);
+    }
+
+    .linkStyle {
+        margin-left: 8px;
+    }
+
+    .dropdown {
+        list-style-type: none;
+        padding-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+
+        li {
+            margin-top: 5px;
+        }
+    }
+
+    .show {
+        max-height: 200px;
+        transition: max-height 0.3s ease-in;
+    }
+
+    .section-title{
+        color: rgba(28, 28, 28, 0.4);
+    }
+}
+.menuButton{
+    padding: 6px;
+    border: none;
+    color: rgb(229, 226, 226);
+    background-color: transparent;
+}
+.clicked{
+color: $secondaryColor;
+}

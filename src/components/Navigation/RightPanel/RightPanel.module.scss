@@ -1,0 +1,11 @@
+@import '../../../App.scss'; 
+
+.panel {
+    border: 1px solid $borderColor;
+    padding: 15px;
+    gap: 8px !important;
+    width: 280px !important;
+}
+.card{ 
+     padding: 10px !important;
+}

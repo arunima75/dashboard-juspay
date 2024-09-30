@@ -1,0 +1,63 @@
+@import '../../../App.scss';
+.panel {
+  border-bottom: 1px solid $borderColor;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: width 0.3s ease;
+}
+.expanded {
+  width: 60%;
+  &.leftPanelClosed {
+    width: calc(100% - 250px);
+  }
+  &.leftPanelClosed.rightPanelClosed {
+    width: 100%;
+  }
+  &.rightPanelClosed {
+    width: calc(100% - 270px);
+  }
+}
+.collapsed {
+  width: calc(100% - (250px + 270px));
+  transition: width 0.3s ease;
+}
+.children {
+  padding: 24px;
+  overflow: auto;
+  height: 88vh;
+}
+.searchBox {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  padding: 6px 16px;
+  max-width: 250px;
+  .searchIcon {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-right: 8px;
+  }
+  input[type="text"] {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #b0b0b0;
+    outline: none;
+    flex: 1;
+    /* Expands to take available space */
+    width: 100px;
+    &::placeholder {
+      color: #b0b0b0;
+      font-size: 14px;
+    }
+  }
+  .shortcut {
+    font-size: 14px;
+    color: #d0d0d0;
+  }
+}

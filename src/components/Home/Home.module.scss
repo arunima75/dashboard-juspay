@@ -1,0 +1,18 @@
+.grid1, .gridArea{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px !important
+}
+
+.grid2{
+    display: grid;
+    grid-template-columns: 75% 24%;
+    grid-gap: 8px !important
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+}

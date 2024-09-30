@@ -1,0 +1,33 @@
+@import '../../../App.scss'; 
+
+.table{
+    background-color: null;
+}
+.status{
+    height: 6px !important;
+    width: 6px !important;
+}
+.searchbox{
+    flex-grow: 1;
+    display: 'flex';
+    justify-content: 'flex-end';
+    color: black;
+}
+
+.cellData {
+    display: flex;
+    align-items: center;
+    div {
+        margin-right: 12px;
+    }
+    color: black;
+}
+
+.tableMain {
+    display: flex;
+    background: $borderColor;
+    align-items: center;
+    padding: 10px;
+    margin: 16px 0px;
+    border-radius: 8px;
+}
