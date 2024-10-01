@@ -50,11 +50,11 @@
             padding: 2px 0px;
         }
     }
-    .img-dark{
-       filter: invert(0); 
+    .icon-dark{
+       filter: invert(1); 
     }
-    .img-light{
-        filter: invert(1);
+    .icon-light{
+        filter: invert(0);
     }
     .link {
         display: flex;

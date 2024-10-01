@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext} from "react";
 import styles from "./LeftPanel.module.scss";
 import { ThemeContext } from "../../../context/ThemeContext";
 
@@ -10,7 +10,7 @@ function Dashboards({ title,data}) {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
- const imgClass = themeMode === 'dark' ? styles['img-dark'] : styles['img-light'];
+ const imgClass = themeMode === 'dark' ? styles['icon-dark'] : styles['icon-light'];
 
   return (
     <div className={styles.dashboards}>
