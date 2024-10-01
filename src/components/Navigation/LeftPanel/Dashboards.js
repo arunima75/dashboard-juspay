@@ -10,7 +10,7 @@ function Dashboards({ title,data}) {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
- const imgClass = themeMode === 'dark' ? styles['icon-dark'] : styles['icon-light'];
+ const iconStyle = themeMode === 'dark' ? styles['icon-dark'] : '';
 
   return (
     <div className={styles.dashboards}>
@@ -29,7 +29,7 @@ function Dashboards({ title,data}) {
               }}
             >
               <span className={styles.linkPoint}>{openDropdown === index ? 'v' : '>'}</span>
-              <img className={imgClass} height={20} src={item.icon} alt={item.name} />
+              <img className={iconStyle} height={20} src={item.icon} alt={item.name} />
               <span className={styles.linkStyle}>{item.name}</span>
             </a>
             {item.children && (

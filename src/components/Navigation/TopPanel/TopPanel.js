@@ -16,6 +16,7 @@ function TopPanel({ children }) {
     toggleRightPanel,
   } = useContext(PanelContext);
 
+  const {themeMode} = useContext(ThemeContext);
   const { toggleTheme } = useContext(ThemeContext);
 
   let panelClass = styles.collapsed;
@@ -26,19 +27,20 @@ function TopPanel({ children }) {
   } else if (isLeftPanelOpen && isRightPanelOpen) {
     panelClass = `${styles.expanded} ${styles.leftPanelClosed} ${styles.rightPanelClosed}`;
   }
-
+ 
+  const iconStyle = themeMode === 'dark' ? styles['icon-dark'] : {};
   return (
     <div className={panelClass}>
       <div className={styles.panel}>
         <div className="d-flex align-center column-gap-10">
           <img
-            className="cursor-pointer"
+            className={`cursor-pointer ${iconStyle}`}
             onClick={toggleLeftPanel}
             height={18}
             src="/images/toggle-panel.png"
             alt="Toggle Right panel"
           />
-          <img height={18} src="/images/bookmark.png" alt="Bookmarks" />
+          <img  className={iconStyle} height={18} src="/images/bookmark.png" alt="Bookmarks" />
           <Breadcrumbs data={breadcrumbsData} />
         </div>
         <div className="d-flex align-center column-gap-10">
@@ -51,11 +53,11 @@ function TopPanel({ children }) {
             />
             <span className={styles.shortcut}>⌘ /</span>
           </div>
-          <img onClick={toggleTheme} className="cursor-pointer" height={18} src="/images/toggle-theme.png" alt="Toggle theme" />
-          <img height={18} src="/images/history.png" alt="history" />
-          <img height={18} src="/images/bell.png" alt="favorites" />
+          <img onClick={toggleTheme} className={`cursor-pointer ${iconStyle}`} height={18} src="/images/toggle-theme.png" alt="Toggle theme" />
+          <img  className={iconStyle} height={18} src="/images/history.png" alt="history" />
+          <img  className={iconStyle} height={18} src="/images/bell.png" alt="favorites" />
           <img
-            className="cursor-pointer"
+            className={`cursor-pointer ${iconStyle}`}
             onClick={toggleRightPanel}
             height={18}
             src="/images/toggle-panel.png"
