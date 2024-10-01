@@ -50,7 +50,12 @@
             padding: 2px 0px;
         }
     }
-
+    .img-dark{
+       filter: invert(0); 
+    }
+    .img-light{
+        filter: invert(1);
+    }
     .link {
         display: flex;
         align-items: center;
@@ -66,7 +71,7 @@
 
     .linkPoint {
         margin-right: 8px;
-        color: var(--link-point-color)
+        color: var(--link-point-color);
     }
 
     .linkStyle {
@@ -102,4 +107,3 @@
 .clicked{
 color: $secondaryColor;
 }
-

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { DEFAULT_THEME } from '../constants/config';
 
 export const ThemeContext = createContext();
 
@@ -13,15 +14,13 @@ const darkTheme = {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [themeMode, setThemeMode] = useState('light');
+  const [themeMode, setThemeMode] = useState(DEFAULT_THEME);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setThemeMode(savedTheme);
-    const initialTheme = savedTheme === 'dark' ? darkTheme : lightTheme;
+    const initialTheme = themeMode === 'dark' ? darkTheme : lightTheme;
     document.body.style.backgroundColor = initialTheme.backgroundColor;
     document.body.style.color = initialTheme.color;
-  }, []);
+  }, [themeMode]);
 
   const toggleTheme = () => {
     const newThemeMode = themeMode === 'light' ? 'dark' : 'light';
@@ -29,7 +28,6 @@ export const ThemeProvider = ({ children }) => {
     const newTheme = newThemeMode === 'dark' ? darkTheme : lightTheme;
     document.body.style.backgroundColor = newTheme.backgroundColor;
     document.body.style.color = newTheme.color;
-    localStorage.setItem('theme', newThemeMode);
   };
 
   const theme = themeMode === 'dark' ? darkTheme : lightTheme;

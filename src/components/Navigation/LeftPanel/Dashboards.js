@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import styles from "./LeftPanel.module.scss";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 function Dashboards({ title,data}) {
+  const { themeMode } = useContext(ThemeContext);
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (index) => {
     setOpenDropdown(openDropdown === index ? null : index);
   };
+
+ const imgClass = themeMode === 'dark' ? styles['img-dark'] : styles['img-light'];
 
   return (
     <div className={styles.dashboards}>
@@ -25,7 +29,7 @@ function Dashboards({ title,data}) {
               }}
             >
               <span className={styles.linkPoint}>{openDropdown === index ? 'v' : '>'}</span>
-              <img  className={styles.image} height={20} src={item.icon} alt={item.name} />
+              <img className={imgClass} height={20} src={item.icon} alt={item.name} />
               <span className={styles.linkStyle}>{item.name}</span>
             </a>
             {item.children && (
