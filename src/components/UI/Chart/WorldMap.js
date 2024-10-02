@@ -11,7 +11,8 @@ const WorldMap = () => {
   const options = {
     chart: {
       map: worldMap,
-      height: 300,
+      height: 150,
+      // width: 179,
       backgroundColor: null
     },
     title: {
@@ -41,6 +42,7 @@ const WorldMap = () => {
       },
     ],
     colorAxis: {
+      visible: false,
       min: 0,
       minColor: '#FFFFFF',
       maxColor: Highcharts.getOptions().colors[0],
@@ -51,10 +53,9 @@ const WorldMap = () => {
     credits:{
       enabled: false,
     },
-    
   };
 
-  return <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "80%" } }} constructorType={'mapChart'}  options={options} />;
+  return <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "100%" } }} constructorType={'mapChart'}  options={options} />;
 };
 
 export default WorldMap;

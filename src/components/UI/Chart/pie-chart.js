@@ -9,6 +9,7 @@ function PieChart({ height, width }) {
   const [options, setOptions] = useState({
     chart: {
       backgroundColor: null,
+      height: '300px'
     },
     title: {
         text: ""
@@ -109,8 +110,8 @@ function PieChart({ height, width }) {
         },
       },
       colors: themeMode === "dark"
-        ? ["#C6C7F8", "#baecbd", "#95a3fc", "#b1e3ff"] 
-        : ["#1C1C1C", "#baecbd", "#95a3fc", "#b1e3ff"], 
+        ? ["#C6C7F8", "#baecbd", "#95a3fc", "#b1e3ff"]
+        : ["#1C1C1C", "#baecbd", "#95a3fc", "#b1e3ff"],
     }));
   }, [themeMode]);
 

@@ -6,7 +6,7 @@ import { useContext } from "react";
 function Card({ color, title, children, className }) {
   const {themeMode} = useContext(ThemeContext);
   const theme = themeMode=== 'dark' ? '-dark' : '-light';
-  
+
   const customClass = `${styles.main } ${ color ? 'bg-' + color + theme : ""} ${className}`
   return (
     <div className={customClass}>

@@ -114,7 +114,7 @@ function Home() {
                   key={index}
                   className="d-flex align-center justify-space-between mt-1"
                 >
-                  <h1>{item.value}</h1>
+                  <h2>{item.value}</h2>
                   <div className="d-flex align-center">
                     <p>{item.percentage}</p>
                     <img
@@ -128,22 +128,27 @@ function Home() {
             ))}
           </div>
           <div className={styles.gridArea}>
-            <Card color="primary" title="Projections vs Actuals" >
-              <Chart graphData={estimateGraph} chartType="column" height={230} />
+            <Card color="primary" title="Projections vs Actuals" className={'sm-height'} >
+              <Chart graphData={estimateGraph} chartType="column" height={168} />
             </Card>
           </div>
         </div>
 
         <div className={`mt-3 ${styles.grid2}`}>
           <Card color="primary" title="Revenue" >
-            <SpinalChart graphData={estimateSpinalGraph} chartType="spline"/>
+            <SpinalChart graphData={estimateSpinalGraph} chartType="spline" height={"232px"}/>
           </Card>
           <Card color="primary" title={<span style={{ textAlign: "center", display: "block" }}>Revenue by Location</span>}>
             <WorldMap height={82}/>
+            <p> Newyork</p>
+            <p> San Fransico</p>
+            <p> Sydney</p>
+            <p> Singapore</p>
+
           </Card>
         </div>
 
-        <div className={`mt-3 ${styles.grid2}`}>
+        <div className={`mt-3 ${styles.grid3}`}>
           <Card color="primary" title="Top Selling Products" >
             <TopSellingList />
           </Card>
