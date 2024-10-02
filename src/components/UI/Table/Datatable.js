@@ -1,4 +1,4 @@
-import React, { useState, useMemo, Fragment } from "react";
+import React, { useState, useMemo, Fragment, useContext } from "react";
 import {
   Table,
   TableBody,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 
 import styles from "./Table.module.scss";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 function DynamicTable({
   columns,
@@ -27,6 +28,8 @@ function DynamicTable({
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "asc" });
   const [selectedRows, setSelectedRows] = useState([]);
+  const {themeMode} = useContext(ThemeContext);
+  
 
   const filteredRows = useMemo(() => {
     return rows.filter((row) => {
@@ -89,6 +92,11 @@ function DynamicTable({
   const isSelected = (row) => selectedRows.includes(row);
   const isAllSelected =
     selectedRows.length === sortedRows.length && sortedRows.length > 0;
+
+  const tableText ={
+    backgroundColor: 'transparent',
+    color : 'var(--text-color)'
+  }
 
   return (
     <>
@@ -246,7 +254,7 @@ function DynamicTable({
                       borderBottom: "none",
                     }}
                   >
-                    <span className={styles.cellData}>
+                    <span className={`${styles.cellData}-${themeMode === 'dark'? 'dark' :'light'}`}>
                       {column.render ? column.render(row) : row[column.id]}
                     </span>
                   </TableCell>
