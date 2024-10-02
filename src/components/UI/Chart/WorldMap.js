@@ -12,7 +12,6 @@ const WorldMap = () => {
     chart: {
       map: worldMap,
       height: 150,
-      // width: 179,
       backgroundColor: null
     },
     title: {
@@ -55,7 +54,16 @@ const WorldMap = () => {
     },
   };
 
-  return <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "100%" } }} constructorType={'mapChart'}  options={options} />;
-};
+  return (
+  <div style={{textAlign: 'left'}}>
+   <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "100%" } }} constructorType={'mapChart'}  options={options} />
+   <div style={{ marginTop: '2px', marginLeft: '10px' }}>
+        <p>New York</p>
+        <p>San Francisco</p>
+        <p>Sydney</p>
+        <p>Singapore</p>
+      </div>
+  </div>
+)};
 
 export default WorldMap;

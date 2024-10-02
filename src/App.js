@@ -23,6 +23,8 @@ function App() {
           <Route path="/default"  element={<Home/>} />
           <Route path="/eCommerce" element={<Home/>} />
           <Route path="/projects" element={<OrderList/>} />
+          <Route path="/online-courses" element={<OrderList/>} />
+          
         </Routes>
       </Layout>
     </Router>

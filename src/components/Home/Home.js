@@ -140,11 +140,6 @@ function Home() {
           </Card>
           <Card color="primary" title={<span style={{ textAlign: "center", display: "block" }}>Revenue by Location</span>}>
             <WorldMap height={82}/>
-            <p> Newyork</p>
-            <p> San Fransico</p>
-            <p> Sydney</p>
-            <p> Singapore</p>
-
           </Card>
         </div>
 

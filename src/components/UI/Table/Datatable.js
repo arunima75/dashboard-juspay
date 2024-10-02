@@ -96,12 +96,12 @@ function DynamicTable({
   return (
     <>
         { enableSearch && (
-          <div className={styles.tableMain}>
+          <div className={styles.tableMain} style={{background: themeMode === 'dark'? 'rgba(255,255,255,0.05': 'rgba(247,249,251,1)'}}>
           <Fragment>
             <div className="d-flex column-gap-10">
-              <img src="/images/create.png" height={20} alt="actions" />
-              <img src="/images/fliter-view.png" height={20} alt="filter" />
-              <img src="/images/sort.png" height={20} alt="sort" />
+              <img className={themeMode === 'dark' ? styles.imgIcon : ''} src="/images/create.png" height={20} alt="actions" />
+              <img className={themeMode === 'dark' ? styles.imgIcon : ''} src="/images/fliter-view.png" height={20} alt="filter" />
+              <img className={themeMode === 'dark' ? styles.imgIcon : ''} src="/images/sort.png" height={20} alt="sort" />
             </div>
             <div
               style={{
@@ -128,29 +128,14 @@ function DynamicTable({
                     </InputAdornment>
                   ),  
                   sx: {
-                    "& .MuiOutlinedInput-root": {
-                      borderColor: "black",
-                      "& fieldset": {
-                        borderColor: "black",
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "black", 
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "black", 
-                      },
-                      backgroundColor: "white",
-                      color: "black", 
+                    backgroundColor : themeMode === 'dark'? 'rgba(28,28,28,0.4)' : 'rgba(255,255,255,0.4)',
+                    borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)': 'rgba(28,28,28,0.1)',
+                    borderWidth: '2px',
+                    "& .MuiOutlinedInput-input::placeholder":{
+                      color: themeMode === 'dark' ? 'rgba(255,255,255,0.2)':'rgba(28,28,28,0.2)',
+                      opacity:1,
                     },
-                    "& .MuiInputAdornment-root": {
-                      color: "black", 
-                    },
-                    "& .MuiInputBase-input": {
-                      color: "black", 
-                    },
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black", 
-                    },
+                    color: themeMode === 'dark' ? 'rgba(255,255,255,0.2)':'rgba(28,28,28,0.2)',
                   },
                 }}
                 inputProps={{
