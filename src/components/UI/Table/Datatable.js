@@ -254,7 +254,7 @@ function DynamicTable({
                       borderBottom: "none",
                     }}
                   >
-                    <span className={`${styles.cellData}-${themeMode === 'dark'? 'dark' :'light'}`}>
+                    <span className={`${styles.cellData} ${themeMode === 'dark'? styles.dark :styles.light}`}>
                       {column.render ? column.render(row) : row[column.id]}
                     </span>
                   </TableCell>
