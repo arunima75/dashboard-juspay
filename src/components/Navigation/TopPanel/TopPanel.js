@@ -44,8 +44,8 @@ function TopPanel({ children }) {
           <Breadcrumbs data={breadcrumbsData} />
         </div>
         <div className="d-flex align-center column-gap-10">
-          <div className={styles.searchBox}>
-            <span className={styles.searchIcon}><img height={18} src="/images/search.png" alt="Search" /></span>
+          <div className={styles.searchBox}style={{backgroundColor: themeMode==='dark'?'rgba(255,255,255,0.1)':'rgba(28,28,28,0.05)'}}>
+            <span className={styles.searchIcon}><img className={iconStyle} height={18} src="/images/search.png" alt="Search" /></span>
             <input
               type="text"
               placeholder="Search"
@@ -54,8 +54,8 @@ function TopPanel({ children }) {
             <span className={styles.shortcut}>⌘ /</span>
           </div>
           <img onClick={toggleTheme} className={`cursor-pointer ${iconStyle}`} height={18} src="/images/toggle-theme.png" alt="Toggle theme" />
-          <img  className={iconStyle} height={18} src="/images/history.png" alt="history" />
-          <img  className={iconStyle} height={18} src="/images/bell.png" alt="favorites" />
+          <img className={iconStyle} height={18} src="/images/history.png" alt="history" />
+          <img className={iconStyle} height={18} src="/images/bell.png" alt="favorites" />
           <img
             className={`cursor-pointer ${iconStyle}`}
             onClick={toggleRightPanel}

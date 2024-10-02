@@ -1,16 +1,13 @@
-
 body.light {
   --background-color: #ffffff;
   --text-color: #000000;
   --link-point-color: rgba(28, 28, 28, 0.2);
-  --theme: light;
 }
 
 body.dark {
   --background-color: #000000;
   --text-color: #ffffff;
   --link-point-color: #ffffff;
-  --theme: dark;
 }
 
 body {

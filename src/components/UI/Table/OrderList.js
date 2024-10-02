@@ -1,47 +1,10 @@
 import React from 'react';
 import DynamicTable from './Datatable'
-import { Avatar } from '@mui/material';
+import { Avatar } from '@mui/material'; 
+import {ThemeContext} from '../../../context/ThemeContext';
+import { useContext } from 'react';
 
-// Status color helper function
-const statusColor = (status) => {
-  switch (status) {
-    case 'In Progress':
-      return '#8A8CD9';
-    case 'Complete':
-      return '#4AA785';
-    case 'Pending':
-      return '#59A8D4';
-    case 'Approved':
-      return '#FFC555';
-    case 'Rejected':
-      return 'rgba(28, 28, 28, 0.4)';
-    default:
-      return 'default';
-  }
-};
 
-const columnsTable = [
-  { id: 'id', label: 'Order ID'},
-  { id: 'user', label: 'User', render: (row) => (
-      <>
-        <Avatar alt={row.user.name} src={row.user.avatar} style={{height:"24px", width:"24px", borderRadius:8}} />
-        {row.user.name}
-      </>
-    ) },
-  { id: 'project', label: 'Project' },
-  { id: 'address', label: 'Address' },
-  { id: 'date', label: 'Date', render:(row) =>(
-       <>
-       <img height={16} alt='date icon' src={row.date.icon} style={{marginRight:"8px"}}/>
-       {row.date.time}
-       </>
-  ) },
-  { id: 'status', label: 'Status', render: (row) => (
-    <span  className='status' style={{ color: statusColor(row.status),  }}>
-    • {row.status}
-  </span>
-    ) }
-];
 
 const rowsTable = [
   { id: '#CM9801', user: { name: 'Natali Craig', avatar: '/images/Natali.png' }, project: 'Landing Page', address: 'Meadow Lane Oakland', date: {icon: '/images/date.png', time:'Just now'}, status: 'In Progress' },
@@ -52,6 +15,45 @@ const rowsTable = [
 ];
 
 function ProjectDetails () {
+  const {themeMode} = useContext(ThemeContext);
+  const statusColor = (status) => {
+    switch (status) {
+      case 'In Progress':
+        return '#8A8CD9';
+      case 'Complete':
+        return '#4AA785';
+      case 'Pending':
+        return '#59A8D4';
+      case 'Approved':
+        return '#FFC555';
+      case 'Rejected':
+        return themeMode === 'dark'? 'rgba(255,255,255,0.4)' : 'rgba(28, 28, 28, 0.4)';
+      default:
+        return 'default';
+    }
+  };
+  const columnsTable = [
+    { id: 'id', label: 'Order ID'},
+    { id: 'user', label: 'User', render: (row) => (
+        <>
+          <Avatar alt={row.user.name} src={row.user.avatar} style={{height:"24px", width:"24px", borderRadius:8}} />
+          {row.user.name}
+        </>
+      ) },
+    { id: 'project', label: 'Project' },
+    { id: 'address', label: 'Address' },
+    { id: 'date', label: 'Date', render:(row) =>(
+         <>
+         <img height={16} alt='date icon' src={row.date.icon} style={{marginRight:"8px"}}/>
+         {row.date.time}
+         </>
+    ) },
+    { id: 'status', label: 'Status', render: (row) => (
+      <span  className='status' style={{ color: statusColor(row.status),  }}>
+      • {row.status}
+    </span>
+      ) }
+  ];
   return (
     <div>
       <h2>Order List</h2>

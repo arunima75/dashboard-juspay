@@ -93,14 +93,8 @@ function DynamicTable({
   const isAllSelected =
     selectedRows.length === sortedRows.length && sortedRows.length > 0;
 
-  const tableText ={
-    backgroundColor: 'transparent',
-    color : 'var(--text-color)'
-  }
-
   return (
     <>
-      
         { enableSearch && (
           <div className={styles.tableMain}>
           <Fragment>
@@ -181,7 +175,7 @@ function DynamicTable({
                   padding="checkbox"
                   style={{
                     backgroundColor: "transparent",
-                    color: "rgba(28,28,28,0.4)",
+                    color: themeMode === 'dark' ? 'rgba(255,255,255,0.4)' : 'rgba(28,28,28,0.4)',
                   }}
                 >
                   <Checkbox
@@ -192,9 +186,9 @@ function DynamicTable({
                     checked={isAllSelected}
                     onChange={handleSelectAll}
                     sx={{
-                      color: 'black',
+                      color: themeMode=== 'dark'? 'rgba(255,255,255,0.2)' :'rgba(28,28,28,0.2)',
                       '&.Mui-checked': {
-                        color: 'black',
+                        color: themeMode=== 'dark' ? '#C6C7F8' : '#1C1C1C',
                       },
                     }}
                   />
@@ -205,7 +199,7 @@ function DynamicTable({
                   key={column.id}
                   style={{
                     backgroundColor: "transparent",
-                    color: "rgba(28,28,28,0.4)",
+                    color: themeMode === 'dark' ? 'rgba(255,255,255,0.4)' : 'rgba(28,28,28,0.4)',
                   }}
                 >
                   {enableSorting ? (
@@ -238,9 +232,9 @@ function DynamicTable({
                       checked={isSelected(row)}
                       onChange={() => handleSelectRow(row)}
                       sx={{
-                        color: 'black',
+                        color: themeMode=== 'dark'? 'rgba(255,255,255,0.2)' :'rgba(28,28,28,0.2)',
                         '&.Mui-checked': {
-                          color: 'black',
+                          color: themeMode=== 'dark' ? '#C6C7F8' : '#1C1C1C',
                         },
                       }}
                     />
