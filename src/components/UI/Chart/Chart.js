@@ -1,8 +1,11 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { ThemeContext } from "../../../context/ThemeContext";
+import { useContext } from "react";
 
 
 function Chart({ graphData, chartType, height, width }) {
+   const {themeMode} = useContext(ThemeContext);
 
     const estimateChartOptions = {
         chart: {
@@ -20,7 +23,7 @@ function Chart({ graphData, chartType, height, width }) {
           gridLineColor: 'quaternary',
           labels: {
             style: {
-              color: 'quaternary',
+              color: themeMode === 'dark'? 'rgba(255,255,255,0.4)': 'rgba(28,28,28,0.4)',
             },
           },
         },
@@ -37,7 +40,7 @@ function Chart({ graphData, chartType, height, width }) {
                 return this.value > 0 ? this.value + "M" : this.value;
               },
               style: {
-                color: 'quaternary',
+                color: themeMode === 'dark'? 'rgba(255,255,255,0.4)': 'rgba(28,28,28,0.4)',
               },
             },
             
