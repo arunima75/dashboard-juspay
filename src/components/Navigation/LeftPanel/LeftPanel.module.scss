@@ -1,12 +1,14 @@
 @import '../../../App.scss';
 
 .panel {
-    width: 212px;
+    width: 250px;
     border: 1px solid $borderColor;
     padding: 24px 24px;
     row-gap: 20px;
     display: flex;
     flex-direction: column;
+    font-size: medium;
+    font-weight: 400;
 }
 
 .profile {

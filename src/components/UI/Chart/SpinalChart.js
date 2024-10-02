@@ -2,7 +2,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 
-function Chart({ graphData, chartType, height, width }) {
+function SpinalChart({ graphData, chartType, height, width }) {
 
     const estimateChartOptions = {
         chart: {
@@ -59,10 +59,10 @@ function Chart({ graphData, chartType, height, width }) {
         series: [
           {
             name: "Projection",
-            color: "rgba(168,197,218,0.5)",
+            color: "black",
             data: graphData.map((item) => item.projection),
             pointPadding: 0.3,
-            pointWidth: 25,
+            pointWidth: 0,
             pointPlacement: -0.2,
             showInLegend: false,
           },
@@ -70,8 +70,8 @@ function Chart({ graphData, chartType, height, width }) {
             name: "Actual",
             color: "rgba(168,197,218,1)",
             data: graphData.map((item) => item.actual),
-            pointPadding: 0.3,
-            pointWidth: 25,
+            pointPadding: 0,
+            pointWidth: 0,
             pointPlacement: -0.2,
             showInLegend: false,
           },
@@ -85,4 +85,4 @@ function Chart({ graphData, chartType, height, width }) {
   );
 }
 
-export default Chart;
+export default SpinalChart;

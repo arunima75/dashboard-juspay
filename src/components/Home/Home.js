@@ -1,6 +1,7 @@
 import Card from "../UI/Card/Card";
 import CardTitle from "../UI/Card/CardTitle";
 import Chart from "../UI/Chart/Chart";
+import SpinalChart from "../UI/Chart/SpinalChart";
 import styles from "./Home.module.scss";
 import WorldMap from "../UI/Chart/WorldMap";
 import PieChart from "../UI/Chart/pie-chart";
@@ -50,7 +51,39 @@ function Home() {
     },
     {
       month: "Mar",
-      projection: 24,
+      projection: 14,
+      actual: 18,
+    },
+    {
+      month: "Apr",
+      projection: 29,
+      actual: 24,
+    },
+    {
+      month: "May",
+      projection: 19,
+      actual: 16,
+    },
+    {
+      month: "Jun",
+      projection: 27,
+      actual: 21,
+    },
+  ];
+  const estimateSpinalGraph = [
+    {
+      month: "Jan",
+      projection: 10,
+      actual: 20,
+    },
+    {
+      month: "Feb",
+      projection: 27,
+      actual: 21,
+    },
+    {
+      month: "Mar",
+      projection: 14,
       actual: 18,
     },
     {
@@ -74,9 +107,9 @@ function Home() {
       <CardTitle className="mb-2">eCommerce</CardTitle>
       <div>
         <div className={styles.grid1}>
-          <div className={styles.gridArea}>
+          <div className={styles.gridTest}>
             {graphData.map((item, index) => (
-              <Card color={item.bgColor} title={item.name} className={styles.cardContent}>
+              <Card color={item.bgColor} title={item.name} className="cardone">
                 <div
                   key={index}
                   className="d-flex align-center justify-space-between mt-1"
@@ -94,14 +127,16 @@ function Home() {
               </Card>
             ))}
           </div>
-          <Card color="primary" title="Projections vs Actuals" >
-            <Chart graphData={estimateGraph} chartType="column" height={180} />
-          </Card>
+          <div className={styles.gridArea}>
+            <Card color="primary" title="Projections vs Actuals" >
+              <Chart graphData={estimateGraph} chartType="column" height={230} />
+            </Card>
+          </div>
         </div>
 
         <div className={`mt-3 ${styles.grid2}`}>
           <Card color="primary" title="Revenue" >
-            <Chart graphData={estimateGraph} chartType="line" height={300} />
+            <SpinalChart graphData={estimateSpinalGraph} chartType="spline"/>
           </Card>
           <Card color="primary" title={<span style={{ textAlign: "center", display: "block" }}>Revenue by Location</span>}>
             <WorldMap height={82}/>
@@ -110,10 +145,10 @@ function Home() {
 
         <div className={`mt-3 ${styles.grid2}`}>
           <Card color="primary" title="Top Selling Products" >
-            <TopSellingList  height={264}/>
+            <TopSellingList />
           </Card>
           <Card color="primary" title="Total Sales">
-            <PieChart graphData={estimateGraph} chartType="doughnut" height={280} />
+            <PieChart graphData={estimateGraph} chartType="doughnut" width={170} />
           </Card>
         </div>
       </div>

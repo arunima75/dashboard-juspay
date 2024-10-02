@@ -2,15 +2,17 @@ $borderColor: #e8e8e8;
 $secondaryColor: #6f6e6e86;
 
 $primaryColor: #d0deeb;
-$tertiaryColor: rgba(247, 249, 251, 1);
+$tertiaryColor: #f7f9fb;
 $quaternaryColor: rgba(28,28,28,0.4);
 $primarySurfaceColor: #e3f5ff;
 $card1Color: #E3F5FF;
 $card2Color: #F7F9FB;
 $card3Color: #E5ECF6;
+$darkCardColor : rgba(255,255,255,0.05);
 
 body {
   font-size: 14px !important;
+  font-family: 'Montserrat', sans-serif;
   // font-family: "Inter";
 }
 
@@ -18,17 +20,31 @@ p, h1, h2, h3, h4, h5, h6{
   margin: 0px !important;
 }
 
-.bg-primary {
-  background-color: $tertiaryColor !important;
+.bg-primary-light {
+  background-color: $tertiaryColor;
 }
-.bg-card1 {
+.bg-primary-dark{
+  background-color: $darkCardColor;
+}
+.bg-card1-light {
   background-color: $card1Color !important;
 }
-.bg-card2 {
+.bg-card2-light {
   background-color: $card2Color !important;
 }
-.bg-card3 {
+.bg-card3-light {
   background-color: $card3Color !important;
+}
+.bg-card1-dark {
+  background-color: #E3F5FF !important;
+  color: #1C1C1C;
+}
+.bg-card2-dark {
+  background-color: $darkCardColor;
+}
+.bg-card3-dark {
+  background-color: #E5ECF6;
+  color: #1C1C1C;
 }
 .bg-quaternary{
   background-color: $quaternaryColor !important;

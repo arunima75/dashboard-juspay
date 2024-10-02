@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import styles from "./charts.module.scss"
+import { ThemeContext } from "../../../context/ThemeContext";
 
-function PieChart({ height }) {
-  const [options] = useState({
+function PieChart({ height, width }) {
+  const {themeMode} = useContext(ThemeContext);
+  const [options, setOptions] = useState({
     chart: {
-      height: height,
       backgroundColor: null,
     },
     title: {
@@ -67,8 +68,8 @@ function PieChart({ height }) {
       },
       itemStyle: {
         width: '200px', 
-        whiteSpace: 'nowrap',
-    },
+        color: themeMode === 'dark' ? 'white' : 'black',
+      },
     itemWidth: 200, 
     symbolHeight: 10, 
     },
@@ -97,9 +98,25 @@ function PieChart({ height }) {
     ],
   });
 
+  useEffect(() => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      legend: {
+        ...prevOptions.legend,
+        itemStyle: {
+          ...prevOptions.legend.itemStyle,
+          color: themeMode === "dark" ? "white" : "black",
+        },
+      },
+      colors: themeMode === "dark"
+        ? ["#C6C7F8", "#baecbd", "#95a3fc", "#b1e3ff"] 
+        : ["#1C1C1C", "#baecbd", "#95a3fc", "#b1e3ff"], 
+    }));
+  }, [themeMode]);
+
   return (
     <div className={styles.highchartsPie}>
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "80%" } }} options={options} />
     </div>
 );
 }

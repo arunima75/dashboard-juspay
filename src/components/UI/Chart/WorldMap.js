@@ -2,7 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HC_map from 'highcharts/modules/map';
-import worldMap from '@highcharts/map-collection/custom/world.topo.json'; // Correct path for world map
+import worldMap from '@highcharts/map-collection/custom/world.topo.json';
 
 // Initialize the map module
 HC_map(Highcharts);
@@ -34,7 +34,6 @@ const WorldMap = () => {
           ['de', 1],
           ['cn', 1],
           ['in', 1],
-          // Add more countries as needed
         ],
         mapData: worldMap,
         joinBy: 'hc-key',
@@ -52,9 +51,10 @@ const WorldMap = () => {
     credits:{
       enabled: false,
     },
+    
   };
 
-  return <HighchartsReact highcharts={Highcharts} constructorType={'mapChart'} options={options} />;
+  return <HighchartsReact highcharts={Highcharts} containerProps={{ style: { height: "100%", width: "80%" } }} constructorType={'mapChart'}  options={options} />;
 };
 
 export default WorldMap;
