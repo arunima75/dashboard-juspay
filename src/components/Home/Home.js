@@ -128,7 +128,7 @@ function Home() {
             ))}
           </div>
           <div className={styles.gridArea}>
-            <Card color="primary" title="Projections vs Actuals" className={styles.smHeight}>
+            <Card color="primary" title="Projections vs Actuals" >
               <Chart graphData={estimateGraph} chartType="column" height={168} />
             </Card>
           </div>
