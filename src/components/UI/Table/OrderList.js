@@ -3,7 +3,7 @@ import DynamicTable from './Datatable'
 import { Avatar } from '@mui/material'; 
 import {ThemeContext} from '../../../context/ThemeContext';
 import { useContext } from 'react';
-
+import  {ROWS_PER_PAGE} from '../../../constants/config';
 
 
 const rowsTable = [
@@ -57,7 +57,7 @@ function ProjectDetails () {
   return (
     <div>
       <h2>Order List</h2>
-      <DynamicTable columns={columnsTable} rows={rowsTable} enablePagination={true} enableSorting={true}  enableSearch={true}  enableCheckbox={true} />
+      <DynamicTable columns={columnsTable} rows={rowsTable} enablePagination={true}  rowsPerPage= {ROWS_PER_PAGE} enableSorting={true}  enableSearch={true}  enableCheckbox={true} />
     </div>
   );
 };

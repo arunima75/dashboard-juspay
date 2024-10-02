@@ -24,11 +24,13 @@ function DynamicTable({
   enableSorting = false,
   enablePagination = false,
   enableCheckbox = false,
+  rowsPerPage = 5,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "asc" });
   const [selectedRows, setSelectedRows] = useState([]);
   const {themeMode} = useContext(ThemeContext);
+  const [currentPage, setCurrentPage] = useState(1);
   
 
   const filteredRows = useMemo(() => {
@@ -61,6 +63,13 @@ function DynamicTable({
     return sortedData;
   }, [filteredRows, sortConfig, enableSorting]);
 
+  const totalPages = Math.ceil(sortedRows.length / rowsPerPage);
+
+  const paginatedRows = useMemo(() => {
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    return sortedRows.slice(startIndex, startIndex + rowsPerPage);
+  }, [sortedRows, currentPage, rowsPerPage]);
+
   const handleSort = (columnId) => {
     if (!enableSorting) return;
     let direction = "asc";
@@ -82,16 +91,16 @@ function DynamicTable({
   };
 
   const handleSelectAll = () => {
-    if (selectedRows.length === sortedRows.length) {
+    if (selectedRows.length === paginatedRows.length) {
       setSelectedRows([]);
     } else {
-      setSelectedRows(sortedRows);
+      setSelectedRows(paginatedRows);
     }
   };
 
   const isSelected = (row) => selectedRows.includes(row);
   const isAllSelected =
-    selectedRows.length === sortedRows.length && sortedRows.length > 0;
+    selectedRows.length === paginatedRows.length && paginatedRows.length > 0;
 
   return (
     <>
@@ -120,10 +129,10 @@ function DynamicTable({
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <img
+                      <img className={themeMode === 'dark' ? styles.imgIcon : ''}
                         src="/images/search.png"
                         alt="search"
-                        style={{ width: 15, height: 15, filter: "brightness(0)" }}
+                        style={{ width: 15, height: 15}}
                       />
                     </InputAdornment>
                   ),  
@@ -166,7 +175,7 @@ function DynamicTable({
                   <Checkbox
                     indeterminate={
                       selectedRows.length > 0 &&
-                      selectedRows.length < sortedRows.length
+                      selectedRows.length < paginatedRows.length
                     }
                     checked={isAllSelected}
                     onChange={handleSelectAll}
@@ -203,7 +212,7 @@ function DynamicTable({
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedRows.map((row, rowIndex) => (
+            {paginatedRows.map((row, rowIndex) => (
               <TableRow key={rowIndex} selected={isSelected(row)}>
                 {enableCheckbox && (
                   <TableCell
@@ -252,7 +261,22 @@ function DynamicTable({
             marginTop: "10px",
           }}
         >
-          <Pagination count={5} />
+          <Pagination count={totalPages}
+            page={currentPage}
+            onChange={(event, value) => setCurrentPage(value)}
+            siblingCount={1}
+            boundaryCount={1}
+            disabled={filteredRows.length === 0} 
+            sx={{
+              '& .MuiPaginationItem-root': {
+                color: themeMode === 'dark' ? '#FFFFFF' : '#1C1C1C',
+              },
+              '& .MuiPaginationItem-root.Mui-selected': {
+                backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(28,28,28,0.05)',
+                color: themeMode === 'dark' ? '#FFFFFF' : '#1C1C1C',
+              },
+            }}
+            />
         </div>
       )}
     </>
