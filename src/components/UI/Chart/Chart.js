@@ -4,7 +4,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 import { useContext } from "react";
 
 
-function Chart({ graphData, chartType, height, width }) {
+function Chart({ graphData, chartType, height }) {
    const {themeMode} = useContext(ThemeContext);
 
     const estimateChartOptions = {
@@ -12,7 +12,6 @@ function Chart({ graphData, chartType, height, width }) {
           type: chartType,
           backgroundColor: null,
           height: height,
-          width: width
         },
         title: {
           text: "",
